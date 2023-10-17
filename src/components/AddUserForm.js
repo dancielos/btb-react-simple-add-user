@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 const initialInput = {
 	username: '',
@@ -6,28 +6,40 @@ const initialInput = {
 };
 
 const AddUserForm = function (props) {
-	const [userInput, setUserInput] = useState(initialInput);
+	// const [userInput, setUserInput] = useState(initialInput);
+	const usernameInput = useRef();
+	const ageInput = useRef();
 
-	const inputChangeHandler = function (key, value) {
-		setUserInput((prevState) => {
-			return {
-				...prevState,
-				[key]: value,
-			};
-		});
-	};
+	// const inputChangeHandler = function (key, value) {
+	// setUserInput((prevState) => {
+	// 	return {
+	// 		...prevState,
+	// 		[key]: value,
+	// 	};
+	// });
+	// };
 
 	const submitHandler = function (e) {
 		e.preventDefault();
-		const isInputEmpty = userInput.username === '' || userInput.age === '';
-		const isAgeValid = isFinite(userInput.age) && +userInput.age > 0;
+
+		// const isInputEmpty = userInput.username === '' || userInput.age === '';
+		// const isAgeValid = isFinite(userInput.age) && +userInput.age > 0;
+		const isInputEmpty =
+			usernameInput.current.value === '' || ageInput.current.value === '';
+		const isAgeValid =
+			isFinite(ageInput.current.value) && +ageInput.current.value > 0;
 		if (isInputEmpty)
 			props.onError('Empty input, both username and age are required.');
 		else if (!isAgeValid) props.onError('Age invalid, it must be > 0.');
 		else {
-			props.onSubmit(userInput);
+			// props.onSubmit(userInput);
+			props.onSubmit({
+				username: usernameInput.current.value,
+				age: +ageInput.current.value,
+			});
 		}
-		setUserInput(initialInput);
+		usernameInput.current.value = '';
+		ageInput.current.value = '';
 	};
 
 	return (
@@ -40,10 +52,7 @@ const AddUserForm = function (props) {
 					type='text'
 					className='input input__username'
 					id='username'
-					value={userInput.username}
-					onChange={(e) => {
-						inputChangeHandler('username', e.target.value);
-					}}
+					ref={usernameInput}
 				></input>
 			</div>
 			<div className='input-group'>
@@ -54,10 +63,7 @@ const AddUserForm = function (props) {
 					type='number'
 					className='input input__age'
 					id='age'
-					value={userInput.age}
-					onChange={(e) => {
-						inputChangeHandler('age', e.target.value);
-					}}
+					ref={ageInput}
 				></input>
 			</div>
 			<input type='submit'></input>
