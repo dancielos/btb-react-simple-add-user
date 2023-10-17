@@ -1,5 +1,9 @@
 const UserItem = function (props) {
-	return <li>Name (n years old)</li>;
+	return (
+		<li>
+			{props.username} ({props.age} years old)
+		</li>
+	);
 };
 
 export default UserItem;

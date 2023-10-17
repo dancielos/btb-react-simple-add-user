@@ -32,7 +32,7 @@ body {
 }
 
 .hidden {
-	display: none;
+	display: none !important;
 }
 
 .form {
@@ -102,33 +102,35 @@ body {
 	border-radius: 1rem;
 }
 
-#backdrop-root {
-	display: none;
+.overlay-container {
 	position: absolute;
 	top: 0;
 	right: 0;
 	left: 0;
 	bottom: 0;
 	background: rgba(0, 0, 0, 0.6);
-	opacity: 0;
 	transform: translateZ(0);
+	backdrop-filter: blur(1.5rem);
+	height: 100vh;
 }
 
-#overlay-root {
+.modal-container {
 	position: absolute;
 	top: 0;
 	right: 0;
 	left: 0;
 	bottom: 0;
-	justify-content: center;
-	align-items: center;
-}
 
+	width: max-content;
+	height: max-content;
+	margin: auto;
+}
 .modal {
 	background: #fff;
 	border-radius: 1rem;
 	width: 30rem;
 	height: 25rem;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -155,8 +157,4 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-}
-
-.modal {
-	margin: auto;
 }
