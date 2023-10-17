@@ -5,9 +5,12 @@ import UsersList from './components/UsersList';
 import ErrorModal from './components/ErrorModal';
 
 function App() {
+	// document.getElementById('overlay-root').addEventListener('click', () => {
+	// 	return console.log('overlay clicked');
+	// });
 	return (
 		<>
-			{createPortal(<ErrorModal />, document.getElementById('overlay-root'))}
+			{/* {createPortal(<ErrorModal />, document.getElementById('overlay-root'))} */}
 			<AddUserForm />
 			<UsersList />
 		</>

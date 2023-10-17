@@ -6,6 +6,7 @@ const ErrorModal = function (props) {
 				Please enter a valid name and age (non-empty values). or age must be
 				positive.
 			</p>
+			<button type='button'>Okay</button>
 		</div>
 	);
 };
