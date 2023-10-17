@@ -31,31 +31,6 @@ body {
 	/* align-content: center; */
 }
 
-/* #overlay-root {
-	position: absolute;
-	backdrop-filter: blur(0.5rem);
-	z-index: 2;
-}
-
-#backdrop-root {
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
-} */
-
-.modal {
-	background-color: rgb(57, 57, 57);
-	border-radius: 1rem;
-	color: white;
-	width: 50rem;
-	padding: 5rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
 .hidden {
 	display: none;
 }
@@ -76,7 +51,8 @@ body {
 	display: block;
 }
 
-.form input {
+.form input,
+.modal button {
 	font-size: 1.6rem;
 	padding: 0.8rem 1.6rem;
 	width: 100%;
@@ -91,14 +67,11 @@ body {
 
 .form input[type='text'],
 .form input[type='number'] {
-	/* width: 100%;
-	padding: 1.2rem 2rem;
-	margin: 0.8rem 0;
-	border-radius: 1rem; */
 	outline: 0.1rem solid #000;
 }
 
-.form input[type='submit'] {
+.form input[type='submit'],
+.modal button {
 	background-color: rgb(84, 105, 212);
 	box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
 		rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgb(84, 105, 212) 0px 0px 0px 1px,
@@ -127,4 +100,63 @@ body {
 	padding: 1rem;
 	border: solid 1px #333;
 	border-radius: 1rem;
+}
+
+#backdrop-root {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.6);
+	opacity: 0;
+	transform: translateZ(0);
+}
+
+#overlay-root {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal {
+	background: #fff;
+	border-radius: 1rem;
+	width: 30rem;
+	height: 25rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.modal button {
+	width: 50%;
+	align-self: center;
+}
+
+.modal .error-title,
+.modal .error-message,
+.modal button {
+	padding-right: 2.5rem;
+	padding-left: 2.5rem;
+}
+
+.modal .error-title {
+	background-color: rgb(249, 66, 66);
+	color: #fff;
+	height: 5rem;
+	text-align: center;
+	justify-self: start;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.modal {
+	margin: auto;
 }
